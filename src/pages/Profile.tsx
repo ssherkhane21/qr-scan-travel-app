@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import Header from "@/components/Header";
 import ActionButton from "@/components/ActionButton";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { UserRound } from "lucide-react";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -28,44 +30,43 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-appGreen">
+    <div className="flex flex-col min-h-screen bg-white">
       <Header title="Profile" hasBack />
       
       <div className="flex-1 flex flex-col items-center p-6">
-        <div className="w-24 h-24 bg-gray-200 rounded-full mb-6 flex items-center justify-center">
-          <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-        </div>
+        <Avatar className="w-24 h-24 bg-gray-200 rounded-full mb-6">
+          <AvatarFallback className="text-gray-500">
+            <UserRound size={48} />
+          </AvatarFallback>
+        </Avatar>
         
-        <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-sm border border-gray-100">
           <h3 className="font-medium text-lg mb-4">Personal Details</h3>
           
           <div className="space-y-4">
             <div>
               <div className="text-sm text-gray-500">Name</div>
-              <div>{userData.name || "Devasa"}</div>
+              <div>{userData.name}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Tel</div>
-              <div>{userData.phone || "876776012"}</div>
+              <div>{userData.phone}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Email ID</div>
-              <div>{userData.email || "pkrj@gmail.com"}</div>
+              <div>{userData.email}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">User ID</div>
-              <div>{userData.userID || "46387450"}</div>
+              <div>{userData.userID}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">DOB</div>
-              <div>{userData.dob || "27/09/1990"}</div>
+              <div>{userData.dob}</div>
             </div>
           </div>
         </div>
@@ -80,8 +81,6 @@ const Profile = () => {
           </ActionButton>
         </div>
       </div>
-      
-      <div className="w-1/3 h-1 bg-white/30 mx-auto mb-4 rounded-full"></div>
     </div>
   );
 };
