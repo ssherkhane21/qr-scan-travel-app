@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useDepartureData } from "@/context/DepartureDataContext";
 import Header from "@/components/Header";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const DepartureHistory = () => {
   const { departureHistory } = useDepartureData();
@@ -32,43 +33,27 @@ const DepartureHistory = () => {
           </div>
         </div>
         
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead>
-              <tr>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  User ID
-                </th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  User Name
-                </th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Date
-                </th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Time
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+        <div className="overflow-x-auto border rounded-md">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="text-xs">User ID</TableHead>
+                <TableHead className="text-xs">User Name</TableHead>
+                <TableHead className="text-xs">Date</TableHead>
+                <TableHead className="text-xs">Time</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {filteredHistory.map((record, index) => (
-                <tr key={index}>
-                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {record.userID}
-                  </td>
-                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {record.userName}
-                  </td>
-                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {record.date}
-                  </td>
-                  <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {record.time}
-                  </td>
-                </tr>
+                <TableRow key={index}>
+                  <TableCell className="text-sm">{record.userID}</TableCell>
+                  <TableCell className="text-sm">{record.userName}</TableCell>
+                  <TableCell className="text-sm">{record.date}</TableCell>
+                  <TableCell className="text-sm">{record.time}</TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       </div>
     </div>

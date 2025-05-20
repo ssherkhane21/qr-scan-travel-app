@@ -45,7 +45,7 @@ const Login = () => {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="text-2xl font-bold text-gray-900">Login</h2>
           <p className="mt-2 text-sm text-gray-600">
-            Welcome back to We-Move All! Please login to your account.
+            Welcome to the We-Move All! Please login to your account.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ const Login = () => {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
+                Password*
               </label>
               <input
                 id="password"

@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for our app
+				// Custom colors for our app based on design
 				appGreen: '#1a7650',
 				appLightGreen: '#43a97e',
 				appOrange: '#ff7d34'

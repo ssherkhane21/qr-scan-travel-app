@@ -3,9 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { useDepartureData } from "@/context/DepartureDataContext";
-import Header from "@/components/Header";
 import { ScanQrCode } from "lucide-react";
-import ActionButton from "@/components/ActionButton";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -20,7 +18,14 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <div className="flex justify-between items-center bg-white px-4 py-3 shadow-sm">
-        <h1 className="text-lg font-bold">Hello, {userData?.name || "User"}</h1>
+        <div className="flex items-center">
+          <button className="p-2 mr-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          <h1 className="text-lg font-bold">Hello, {userData?.name || "User"}</h1>
+        </div>
         <button 
           onClick={() => navigate("/profile")}
           className="px-2 py-1 text-sm"
@@ -58,7 +63,7 @@ const Dashboard = () => {
             {activeTab === "onboard" ? (
               <div className="flex flex-col items-center py-6">
                 <div 
-                  className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4 border-2 border-appGreen cursor-pointer"
+                  className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4 cursor-pointer hover:bg-gray-200"
                   onClick={handleScanQR}
                 >
                   <ScanQrCode size={40} className="text-appGreen" />

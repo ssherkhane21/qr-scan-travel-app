@@ -11,7 +11,7 @@ const Header = ({ title, hasBack = false }: HeaderProps) => {
   const navigate = useNavigate();
   
   return (
-    <div className="flex items-center bg-white py-4 px-2">
+    <div className="flex items-center bg-white py-4 px-4 border-b">
       {hasBack && (
         <button
           onClick={() => navigate(-1)}

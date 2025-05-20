@@ -41,14 +41,14 @@ const ScanQR = () => {
         
         <ActionButton
           onClick={handleScan}
-          disabled={isScanning}
-          className="mt-4"
+          variant="primary"
+          className="w-full max-w-xs"
         >
           {isScanning ? "Scanning..." : "Onboard"}
         </ActionButton>
       </div>
       
-      <div className="w-1/2 h-1 bg-white/30 mx-auto mb-4 rounded-full"></div>
+      <div className="w-1/3 h-1 bg-white/30 mx-auto mb-4 rounded-full"></div>
     </div>
   );
 };

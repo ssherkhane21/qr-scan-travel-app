@@ -45,27 +45,27 @@ const Profile = () => {
           <div className="space-y-4">
             <div>
               <div className="text-sm text-gray-500">Name</div>
-              <div>{userData.name}</div>
+              <div>{userData.name || "Devasa"}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Tel</div>
-              <div>{userData.phone}</div>
+              <div>{userData.phone || "876776012"}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Email ID</div>
-              <div>{userData.email}</div>
+              <div>{userData.email || "pkrj@gmail.com"}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">User ID</div>
-              <div>{userData.userID}</div>
+              <div>{userData.userID || "46387450"}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">DOB</div>
-              <div>{userData.dob}</div>
+              <div>{userData.dob || "27/09/1990"}</div>
             </div>
           </div>
         </div>
@@ -80,6 +80,8 @@ const Profile = () => {
           </ActionButton>
         </div>
       </div>
+      
+      <div className="w-1/3 h-1 bg-white/30 mx-auto mb-4 rounded-full"></div>
     </div>
   );
 };

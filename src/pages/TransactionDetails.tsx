@@ -25,7 +25,7 @@ const TransactionDetails = () => {
       
       <div className="flex-1 flex flex-col p-6">
         <div className="bg-gray-50 rounded-lg p-5 mb-8">
-          <div className="mb-2 flex justify-between items-center">
+          <div className="mb-4 flex justify-between items-center">
             <span className="text-lg font-semibold">Onboarded</span>
             <div className="w-6 h-6 flex items-center justify-center">
               <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-appGreen">
@@ -42,7 +42,7 @@ const TransactionDetails = () => {
             </div>
             
             <div>
-              <div className="text-sm text-gray-500">ID</div>
+              <div className="text-sm text-gray-500">Tel</div>
               <div>{passengerDetails.id}</div>
             </div>
             
@@ -69,7 +69,7 @@ const TransactionDetails = () => {
         </div>
         
         <div className="mt-auto">
-          <ActionButton onClick={handleBackToHome} fullWidth>
+          <ActionButton onClick={handleBackToHome} variant="primary" fullWidth>
             Back to Home
           </ActionButton>
         </div>
