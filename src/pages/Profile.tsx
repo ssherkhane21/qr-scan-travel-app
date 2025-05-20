@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import ActionButton from "@/components/ActionButton";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { UserRound } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -30,57 +31,62 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <Header title="Profile" hasBack />
       
-      <div className="flex-1 flex flex-col items-center p-6">
-        <Avatar className="w-24 h-24 bg-gray-200 rounded-full mb-6">
+      <div className="flex-1 flex flex-col items-center p-6 pt-8">
+        <Avatar className="w-24 h-24 bg-gray-200 rounded-full mb-8 border-4 border-white shadow-md">
           <AvatarFallback className="text-gray-500">
             <UserRound size={48} />
           </AvatarFallback>
         </Avatar>
         
-        <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-sm border border-gray-100">
-          <h3 className="font-medium text-lg mb-4">Personal Details</h3>
-          
-          <div className="space-y-4">
-            <div>
-              <div className="text-sm text-gray-500">Name</div>
-              <div>{userData.name}</div>
-            </div>
+        <Card className="w-full max-w-md shadow-md mb-8 rounded-xl overflow-hidden">
+          <div className="p-6">
+            <h3 className="font-semibold text-lg mb-5 text-gray-800">Personal Details</h3>
             
-            <div>
-              <div className="text-sm text-gray-500">Tel</div>
-              <div>{userData.phone}</div>
-            </div>
-            
-            <div>
-              <div className="text-sm text-gray-500">Email ID</div>
-              <div>{userData.email}</div>
-            </div>
-            
-            <div>
-              <div className="text-sm text-gray-500">User ID</div>
-              <div>{userData.userID}</div>
-            </div>
-            
-            <div>
-              <div className="text-sm text-gray-500">DOB</div>
-              <div>{userData.dob}</div>
+            <div className="space-y-5">
+              <div className="flex flex-col">
+                <div className="text-sm text-gray-500 mb-1">Name</div>
+                <div className="font-medium">{userData.name}</div>
+              </div>
+              
+              <div className="flex flex-col">
+                <div className="text-sm text-gray-500 mb-1">Tel</div>
+                <div className="font-medium">{userData.phone}</div>
+              </div>
+              
+              <div className="flex flex-col">
+                <div className="text-sm text-gray-500 mb-1">Email ID</div>
+                <div className="font-medium">{userData.email}</div>
+              </div>
+              
+              <div className="flex flex-col">
+                <div className="text-sm text-gray-500 mb-1">User ID</div>
+                <div className="font-medium">{userData.userID}</div>
+              </div>
+              
+              <div className="flex flex-col">
+                <div className="text-sm text-gray-500 mb-1">DOB</div>
+                <div className="font-medium">{userData.dob}</div>
+              </div>
             </div>
           </div>
-        </div>
+        </Card>
         
-        <div className="mt-8 w-full max-w-md">
+        <div className="w-full max-w-md">
           <ActionButton 
             onClick={handleLogout} 
             variant="primary"
             fullWidth
+            className="rounded-xl py-3.5 font-medium text-base shadow-md"
           >
             Logout
           </ActionButton>
         </div>
       </div>
+      
+      <div className="w-1/4 h-1 bg-gray-300 mx-auto mb-6 rounded-full"></div>
     </div>
   );
 };
