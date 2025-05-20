@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { useDepartureData } from "@/context/DepartureDataContext";
-import { ScanQrCode } from "lucide-react";
+import { ScanQrCode, Menu } from "lucide-react";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -14,21 +14,23 @@ const Dashboard = () => {
   const handleScanQR = () => {
     navigate("/scan-qr");
   };
+  
+  const handleViewFullHistory = () => {
+    navigate("/departure-history");
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <div className="flex justify-between items-center bg-white px-4 py-3 shadow-sm">
+      <div className="flex justify-between items-center bg-appGreen px-4 py-3 shadow-sm">
         <div className="flex items-center">
-          <button className="p-2 mr-2">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+          <button className="p-2 mr-2 text-white">
+            <Menu size={24} />
           </button>
-          <h1 className="text-lg font-bold">Hello, {userData?.name || "User"}</h1>
+          <h1 className="text-lg font-semibold text-white">Hello, {userData?.name || "User"}</h1>
         </div>
         <button 
           onClick={() => navigate("/profile")}
-          className="px-2 py-1 text-sm"
+          className="px-2 py-1 text-white"
         >
           Profile
         </button>
@@ -71,43 +73,53 @@ const Dashboard = () => {
                 <span className="text-sm text-gray-600">Scan to Onboard</span>
               </div>
             ) : (
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead>
-                    <tr>
-                      <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        User ID
-                      </th>
-                      <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        User Name
-                      </th>
-                      <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Date
-                      </th>
-                      <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Time
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {departureHistory.map((record, index) => (
-                      <tr key={index}>
-                        <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {record.userID}
-                        </td>
-                        <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {record.userName}
-                        </td>
-                        <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {record.date}
-                        </td>
-                        <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {record.time}
-                        </td>
+              <div>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          User ID
+                        </th>
+                        <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          User Name
+                        </th>
+                        <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Date
+                        </th>
+                        <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Time
+                        </th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {departureHistory.slice(0, 5).map((record, index) => (
+                        <tr key={index}>
+                          <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {record.userID}
+                          </td>
+                          <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {record.userName}
+                          </td>
+                          <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {record.date}
+                          </td>
+                          <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {record.time}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="mt-4 text-center">
+                  <button 
+                    onClick={handleViewFullHistory}
+                    className="text-appGreen text-sm font-medium"
+                  >
+                    View Full History
+                  </button>
+                </div>
               </div>
             )}
           </div>

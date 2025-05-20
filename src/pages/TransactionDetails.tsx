@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import ActionButton from "@/components/ActionButton";
+import { Check } from "lucide-react";
 
 const TransactionDetails = () => {
   const navigate = useNavigate();
@@ -27,43 +28,40 @@ const TransactionDetails = () => {
         <div className="bg-gray-50 rounded-lg p-5 mb-8">
           <div className="mb-4 flex justify-between items-center">
             <span className="text-lg font-semibold">Onboarded</span>
-            <div className="w-6 h-6 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-appGreen">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
+            <div className="w-6 h-6 flex items-center justify-center bg-appGreen rounded-full">
+              <Check size={14} className="text-white" />
             </div>
           </div>
           
           <div className="space-y-4">
             <div>
               <div className="text-sm text-gray-500">Name</div>
-              <div>{passengerDetails.name}</div>
+              <div className="font-medium">{passengerDetails.name}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Tel</div>
-              <div>{passengerDetails.id}</div>
+              <div className="font-medium">{passengerDetails.id}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Email ID</div>
-              <div>{passengerDetails.email}</div>
+              <div className="font-medium">{passengerDetails.email}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Time</div>
-              <div>{passengerDetails.time}</div>
+              <div className="font-medium">{passengerDetails.time}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Date</div>
-              <div>{passengerDetails.date}</div>
+              <div className="font-medium">{passengerDetails.date}</div>
             </div>
             
             <div>
               <div className="text-sm text-gray-500">Location</div>
-              <div>{passengerDetails.location}</div>
+              <div className="font-medium">{passengerDetails.location}</div>
             </div>
           </div>
         </div>

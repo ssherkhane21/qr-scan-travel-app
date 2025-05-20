@@ -3,8 +3,11 @@ import { useState } from "react";
 import { useDepartureData } from "@/context/DepartureDataContext";
 import Header from "@/components/Header";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { ChevronLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const DepartureHistory = () => {
+  const navigate = useNavigate();
   const { departureHistory } = useDepartureData();
   const [filterDate, setFilterDate] = useState("");
   
@@ -14,7 +17,15 @@ const DepartureHistory = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <Header title="Departure History" hasBack />
+      <div className="flex items-center bg-appGreen py-4 px-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="mr-4 text-white"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <h1 className="text-lg font-medium text-white">Departure History</h1>
+      </div>
       
       <div className="p-4">
         <div className="mb-4 flex items-center justify-end">
@@ -35,21 +46,21 @@ const DepartureHistory = () => {
         
         <div className="overflow-x-auto border rounded-md">
           <Table>
-            <TableHeader>
+            <TableHeader className="bg-gray-100">
               <TableRow>
-                <TableHead className="text-xs">User ID</TableHead>
-                <TableHead className="text-xs">User Name</TableHead>
-                <TableHead className="text-xs">Date</TableHead>
-                <TableHead className="text-xs">Time</TableHead>
+                <TableHead className="text-xs font-semibold text-gray-600">User ID</TableHead>
+                <TableHead className="text-xs font-semibold text-gray-600">User Name</TableHead>
+                <TableHead className="text-xs font-semibold text-gray-600">Date</TableHead>
+                <TableHead className="text-xs font-semibold text-gray-600">Time</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {filteredHistory.map((record, index) => (
-                <TableRow key={index}>
-                  <TableCell className="text-sm">{record.userID}</TableCell>
-                  <TableCell className="text-sm">{record.userName}</TableCell>
-                  <TableCell className="text-sm">{record.date}</TableCell>
-                  <TableCell className="text-sm">{record.time}</TableCell>
+                <TableRow key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                  <TableCell className="text-sm py-3">{record.userID}</TableCell>
+                  <TableCell className="text-sm py-3">{record.userName}</TableCell>
+                  <TableCell className="text-sm py-3">{record.date}</TableCell>
+                  <TableCell className="text-sm py-3">{record.time}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
